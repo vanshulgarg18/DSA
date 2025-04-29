@@ -2,16 +2,16 @@ public class MaxValueinTree {
     static class TreeNode {
         int data;
         TreeNode l, r;
-        TreeNode(int val) {
-            data = val;
+        TreeNode(int v) {
+            data = v;
             l = r = null;
         }
     }
-    public static int findMax(TreeNode root) {
+    public static int fmax(TreeNode root) {
         if (root == null)
             return Integer.MIN_VALUE;
-        int leftm = findMax(root.l);
-        int rightm = findMax(root.r);
+        int leftm = fmax(root.l);
+        int rightm = fmax(root.r);
         return Math.max(root.data,Math.max(leftm, rightm));
     }
     public static void main(String[] args){
@@ -20,6 +20,6 @@ public class MaxValueinTree {
         root.r = new TreeNode(30);
         root.l.l = new TreeNode(40);
         root.l.r = new TreeNode(50);
-        System.out.println(findMax(root));
+        System.out.println(fmax(root));
     }
 }
