@@ -2,49 +2,49 @@ public class Level {
     static class TreeNode {
         int data;
         TreeNode l, r;
-        TreeNode(int val) {
-            data = val;
+        TreeNode(int v) {
+            data = v;
             l = r = null;
         }
     }
-    public static void printLevel(TreeNode root, int level) {
+    public static void printLe(TreeNode root, int le) {
         if (root == null)
             return;
-        if (level == 1) {
+        if (le == 1) {
             System.out.print(root.data + " ");
         } 
         else {
-            printLevel(root.l, level - 1);
-            printLevel(root.r, level - 1);
+            printLe(root.l, le - 1);
+            printLe(root.r, le - 1);
         }
     }
-    public static void insertData(TreeNode root, int value) {
+    public static void insdata(TreeNode root, int v) {
         if (root == null) {
-            root = new TreeNode(value);
+            root = new TreeNode(v);
         }
         else if (root.l == null) {
-            root.l = new TreeNode(value);
+            root.l = new TreeNode(v);
         } 
         else if (root.r == null) {
-            root.r = new TreeNode(value);
+            root.r = new TreeNode(v);
         } 
         else {
-            insertData(root.l, value);
-            insertData(root.r, value);
+            insdata(root.l, v);
+            insdata(root.r, v);
         }
     }
-    public static void printTree(TreeNode root) {
+    public static void printTr(TreeNode root) {
         if (root == null)
             return;
-        printTree(root.l);
+        printTr(root.l);
         System.out.print(root.data + " ");
-        printTree(root.r);
+        printTr(root.r);
     }
     public static void main(String[] args) {
         TreeNode root = new TreeNode(100);
         root.l = new TreeNode(50);
         root.r = new TreeNode(150);
         root.l.r = new TreeNode(56);
-        insertData(root, 2);
+        insdata(root, 2);
     }
 }
