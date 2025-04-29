@@ -1,39 +1,33 @@
 public class SearchTree {
     static class TreeNode {
         int data;
-        TreeNode left, right;
-
-        TreeNode(int value) {
-            data = value;
-            left = right = null;
+        TreeNode l, r;
+        TreeNode(int v) {
+            data = v;
+            l = r = null;
         }
     }
-
     public static boolean search(TreeNode root, int key) {
         if (root == null)
             return false;
         if (root.data == key)
             return true;
-
-        return search(root.left, key) || search(root.right, key);
+        return search(root.l, key) || search(root.r, key);
     }
-
-    public static int countLeaf(TreeNode root) {
+    public static int cntleaf(TreeNode root) {
         if (root == null)
             return 0;
-        if (root.left == null && root.right == null)
+        if (root.l == null && root.r == null)
             return 1;
-        return countLeaf(root.left) + countLeaf(root.right);
+        return cntleaf(root.l) + cntleaf(root.r);
     }
-
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-
+        root.l = new TreeNode(2);
+        root.r = new TreeNode(3);
+        root.l.l = new TreeNode(4);
+        root.l.r = new TreeNode(5);
         System.out.println("Is 5 present in the tree : " + search(root, 5));
-        System.out.println("Number of leaf nodes in the tree is : " + countLeaf(root));
+        System.out.println("Number of leaf nodes in the tree is : " + cntleaf(root));
     }
 }
