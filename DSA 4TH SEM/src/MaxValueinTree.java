@@ -1,34 +1,25 @@
 public class MaxValueinTree {
     static class TreeNode {
         int data;
-        TreeNode left, right;
-
+        TreeNode l, r;
         TreeNode(int val) {
             data = val;
-            left = right = null;
+            l = r = null;
         }
     }
-
     public static int findMax(TreeNode root) {
         if (root == null)
             return Integer.MIN_VALUE;
-
-        int leftMax = findMax(root.left);
-        int rightMax = findMax(root.right);
-
-        return Math.max(root.data,Math.max(leftMax, rightMax));
+        int leftm = findMax(root.l);
+        int rightm = findMax(root.r);
+        return Math.max(root.data,Math.max(leftm, rightm));
     }
-
-
     public static void main(String[] args){
         TreeNode root = new TreeNode(10);
-        root.left = new TreeNode(20);
-        root.right = new TreeNode(30);
-        root.left.left = new TreeNode(40);
-        root.left.right = new TreeNode(50);
-
-
-        System.out.println("Maximum value in the tree is : " + findMax(root));
-
+        root.l = new TreeNode(20);
+        root.r = new TreeNode(30);
+        root.l.l = new TreeNode(40);
+        root.l.r = new TreeNode(50);
+        System.out.println(findMax(root));
     }
 }
