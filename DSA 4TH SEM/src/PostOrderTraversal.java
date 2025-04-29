@@ -1,31 +1,24 @@
 public class PostOrderTraversal {
-
     static class TreeNode {
         int data;
-        TreeNode left, right;
-
-        TreeNode(int value) {
-            data = value;
-            left = right = null;
+        TreeNode l, r;
+        TreeNode(int v) {
+            data = v;
+            l = r = null;
         }
     }
-
-    public static void PostOrder(TreeNode root){
+    public static void postorder(TreeNode root){
         if (root==null) return ;
-
-        PostOrder(root.left);
-        PostOrder(root.right);
-
+        postorder(root.l);
+        postorder(root.r);
         System.out.print(root.data+" ");
     }
-
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-
-        PostOrder(root);
+        root.l = new TreeNode(2);
+        root.r = new TreeNode(3);
+        root.l.l = new TreeNode(4);
+        root.l.r = new TreeNode(5);
+        postorder(root);
     }
 }
