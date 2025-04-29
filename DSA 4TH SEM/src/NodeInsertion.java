@@ -1,60 +1,57 @@
 import java.util.LinkedList;
 import java.util.Queue;
-
 public class NodeInsertion {
-
     static class TreeNode {
         int data;
         TreeNode l, r;
-
-        TreeNode(int val) {
-            data = val;
+        TreeNode(int v) {
+            data = v;
             l = r = null;
         }
     }
-    public static void insertData(TreeNode root, int value) {
+    public static void insData(TreeNode root, int v) {
         if (root == null) {
-            root = new TreeNode(value);
+            root = new TreeNode(v);
         } 
         else if (root.l == null) {
-            root.l = new TreeNode(value);
+            root.l = new TreeNode(v);
         } 
         else if (root.r == null) {
-            root.r = new TreeNode(value);
+            root.r = new TreeNode(v);
         } 
         else {
-            insertData(root.l, value);
+            insData(root.l, v);
         }
     }
-    public static void printPreorder(TreeNode root) {
+    public static void printPO(TreeNode root) {
         if (root != null) {
             System.out.print(root.data + " ");
-            printPreorder(root.l);
-            printPreorder(root.r);
+            printPO(root.l);
+            printPO(root.r);
         }
     }
-    public static void printInorder(TreeNode root) {
+    public static void printIO(TreeNode root) {
         if (root != null) {
-            printInorder(root.l);
+            printIO(root.l);
             System.out.print(root.data + " ");
-            printInorder(root.r);
+            printIO(root.r);
         }
     }
-    public static void insert(TreeNode root, int key){
+    public static void insert(TreeNode root, int k){
         Queue<TreeNode>queue = new LinkedList<>();
         queue.add(root);
         while(!queue.isEmpty()){
-            TreeNode temp = queue.poll();
-            if(temp.l==null){
-                temp.l = new TreeNode(key);
+            TreeNode t = queue.poll();
+            if(t.l==null){
+                t.l = new TreeNode(k);
                 break;
             }
-            else queue.add(temp.l);
-            if(temp.r==null){
-                temp.r = new TreeNode(key);
+            else queue.add(t.l);
+            if(t.r==null){
+                t.r = new TreeNode(k);
                 break;
             }
-            else queue.add(temp.r);
+            else queue.add(t.r);
         }
     }
     public static void main(String[] args) {
@@ -62,11 +59,11 @@ public class NodeInsertion {
         root.l = new TreeNode(20);
         root.r = new TreeNode(30);
         System.out.println("Before Insertion : ");
-        printInorder(root);
-        insertData(root,40);
-        insertData(root, 100);
+        printIO(root);
+        insData(root,40);
+        insData(root, 100);
         System.out.println();
         System.out.println("After Insertion : ");
-        printInorder(root);
+        printIO(root);
     }
 }
